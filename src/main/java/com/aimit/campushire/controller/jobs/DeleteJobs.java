@@ -9,13 +9,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * @author Kaushik Bhat
+ */
 
 @RestController
 @RequestMapping("/job")
@@ -30,6 +33,10 @@ public class DeleteJobs {
         this.jobRepository = jobRepository;
     }
 
+    /**
+     * Deletes all jobs
+     * @return 200
+     */
     @CrossOrigin(host)
     @DeleteMapping("/delete/all")
     public ResponseEntity removeAllJobs() {
@@ -52,6 +59,11 @@ public class DeleteJobs {
         }
     }
 
+    /**
+     * Deletes the Job IDs passed in request parameters
+     * @param jobIds List of Job IDs
+     * @return 200
+     */
     @CrossOrigin(host)
     @DeleteMapping("/delete/")
     public ResponseEntity removeJobs(@RequestParam("id") List<Integer> jobIds) {

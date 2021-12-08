@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
+/**
+ * @author Kaushik Bhat
+ */
+
 @RestController
 @RequestMapping("/job")
 
@@ -28,6 +32,11 @@ public class UpdateJobs {
         this.jobRepository = jobRepository;
     }
 
+    /**
+     * Updates the job with new info
+     * @param newJob The updated job object
+     * @return 200
+     */
     @CrossOrigin(host)
     @PutMapping("/update")
     public ResponseEntity updateJob(@RequestBody Job newJob) {

@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * @author Kaushik Bhat
+ */
 
 @RestController
 @RequestMapping("/job")
@@ -28,6 +30,10 @@ public class RetrieveJobs {
         this.jobRepository = jobRepository;
     }
 
+    /**
+     * Retrieves all jobs
+     * @return 200
+     */
     @GetMapping("/view/all")
     public ResponseEntity getJobs() {
         try {
@@ -47,13 +53,18 @@ public class RetrieveJobs {
         }
     }
 
+    /**
+     * Retrieves all jobs by IDs
+     * @param jobIds List of Job IDs
+     * @return
+     */
     @GetMapping("/view/")
-    public ResponseEntity getJobsByIds(@RequestParam("id") List<Integer> jobId) {
+    public ResponseEntity getJobsByIds(@RequestParam("id") List<Integer> jobIds) {
         try {
-            final List<Job> jobsList = jobRepository.findAllById(jobId);
+            final List<Job> jobsList = jobRepository.findAllById(jobIds);
 
             if (jobsList.isEmpty()) {
-                logger.info("Jobs with IDs: " + jobId + " not found. ");
+                logger.info("Jobs with IDs: " + jobIds + " not found. ");
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
 

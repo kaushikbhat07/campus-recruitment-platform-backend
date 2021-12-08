@@ -16,6 +16,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+/**
+ * @author Kaushik Bhat
+ */
+
 @RestController
 @RequestMapping("/job")
 
@@ -29,6 +33,12 @@ public class AddJob {
         this.jobRepository = jobRepository;
     }
 
+    /**
+     * The method is create a single new job opening
+     *
+     * @param newJobOpening new job object received from request body
+     * @return 201
+     */
     @CrossOrigin(host)
     @PostMapping("/new")
     public ResponseEntity saveJob(@RequestBody Job newJobOpening) {
@@ -48,6 +58,11 @@ public class AddJob {
         }
     }
 
+    /**
+     * The method is create multiple new job openings
+     * @param newJobOpenings List of job objects - multiple job openings
+     * @return 201
+     */
     @CrossOrigin(host)
     @PostMapping("/new/multiple")
     public ResponseEntity saveMultipleJob(@RequestBody List<Job> newJobOpenings) {

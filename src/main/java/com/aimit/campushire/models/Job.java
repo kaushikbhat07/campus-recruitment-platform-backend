@@ -18,6 +18,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
 
+/**
+ * @author Kaushik Bhat
+ */
+
+/**
+ * Jobs Entity
+ */
 @Entity
 @Data
 @Table(name = "jobs")
