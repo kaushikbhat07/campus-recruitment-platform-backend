@@ -51,8 +51,10 @@ public class DeleteJobs {
             logger.info("Deleting all jobs..");
             jobRepository.deleteAll();
 
-            logger.info("All Jobs deleted. Returning with HTTP 200");
-            return new ResponseEntity<>(HttpStatus.OK);
+            logger.info("All Jobs deleted. Returning with HTTP 200 & remaining jobs");
+            final List<Job> remainingJobs = jobRepository.findAll();
+
+            return new ResponseEntity<>(remainingJobs, HttpStatus.OK);
         } catch (Exception e) {
             logger.error("Jobs could not be deleted. Exception occurred: " + e.getMessage());
             return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
@@ -80,11 +82,13 @@ public class DeleteJobs {
                 foundJobIds.add(foundJob.getJobId());
             }
 
-            logger.info("Deleting all jobs..");
+            logger.info("Deleting the jobs with IDs.." + jobIds);
             jobRepository.deleteAllById(foundJobIds);
 
-            logger.info("All Jobs deleted. Returning with HTTP 200");
-            return new ResponseEntity<>(HttpStatus.OK);
+            logger.info("All Jobs deleted. Returning with HTTP 200 & remaining jobs");
+            final List<Job> remainingJobs = jobRepository.findAll();
+
+            return new ResponseEntity<>(remainingJobs, HttpStatus.OK);
 
         } catch (Exception e) {
             logger.error("Jobs could not be deleted. Exception occurred: " + e.getMessage());
