@@ -12,6 +12,7 @@ import java.util.Optional;
  * Student JPA Repository
  */
 public interface StudentRepository extends JpaRepository<Student, Integer> {
-    @Query("SELECT s FROM Job j, Student s INNER JOIN Applicants a ON s.studentId = a.student.studentId WHERE j.jobId = ?1")
+    @Query("SELECT s FROM Applicants a INNER JOIN Student s ON a.student.studentId = s.studentId INNER JOIN Job j " +
+            "ON j.jobId = a.job.jobId where j.jobId = ?1")
     List<Student> findApplicantsByJobId(Integer jobId);
 }
