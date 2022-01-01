@@ -1,8 +1,6 @@
 package com.aimit.campushire.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,28 +9,24 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
-/**
- * @author Kaushik Bhat
- * Jobs Entity
- */
 @Entity
 @Data
-@Table(name = "jobs")
+@Table(name = "applicants", uniqueConstraints = {
+    @UniqueConstraint(name = "UKApplications", columnNames = {"studentId", "jobId"})
+})
 @NoArgsConstructor
-public class Job {
+public class Applicants {
     @CreatedDate
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -43,23 +37,15 @@ public class Job {
     Date modifiedAt;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int jobId;
+    private int applicationId;
 
-    @NotNull
-    private String company;
-    @NotNull
-    private String ctc;
-    private String eligibility;
-    @NotNull
-    private String jobDesc;
-    private String offerType;
-    private String misc;
-
-//    @ManyToMany(mappedBy = "appliedJobs", fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "studentId", nullable = false)
 //    @JsonIgnore
-//    List<Student> appliedStudents;
+    private Student student;
 
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "job")
-    List<Applicants> applicants;
+    @ManyToOne
+    @JoinColumn(name = "jobId", nullable = false)
+//    @JsonIgnore
+    private Job job;
 }
