@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -47,7 +45,7 @@ public class CreateApplicant {
     /**
      * The method creates a new applicant for a job
      *
-     * @param jobId Job identified by Job ID
+     * @param jobId     Job identified by Job ID
      * @param studentId Applicant (Student ID)
      * @return 201
      */

@@ -60,6 +60,7 @@ public class AddJob {
 
     /**
      * The method is create multiple new job openings
+     *
      * @param newJobOpenings List of job objects - multiple job openings
      * @return 201
      */
@@ -72,7 +73,7 @@ public class AddJob {
             logger.info("Adding multiple new job openings.." + newJobOpenings);
             final List<Job> savedJobs = jobRepository.saveAll(newJobOpenings);
 
-            for (Job savedJob: savedJobs) {
+            for (Job savedJob : savedJobs) {
                 logger.info("New job added with the ID: " + savedJob.getJobId());
             }
 

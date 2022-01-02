@@ -10,20 +10,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class CampushireApplication {
-	private static final Logger logger = LogManager.getLogger(CampushireApplication.class);
+    private static final Logger logger = LogManager.getLogger(CampushireApplication.class);
 
-	public static void main(String[] args) {
-		logger.info("Running spring boot campus hire");
-		SpringApplication.run(CampushireApplication.class, args);
-	}
+    public static void main(String[] args) {
+        logger.info("Running spring boot campus hire");
+        SpringApplication.run(CampushireApplication.class, args);
+    }
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("http://localhost:3000");
-			}
-		};
-	}
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("http://localhost:3000");
+            }
+        };
+    }
 }

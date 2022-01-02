@@ -1,6 +1,5 @@
 package com.aimit.campushire.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -23,7 +22,7 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name = "applicants", uniqueConstraints = {
-    @UniqueConstraint(name = "UKApplications", columnNames = {"studentId", "jobId"})
+        @UniqueConstraint(name = "UKApplications", columnNames = {"studentId", "jobId"})
 })
 @NoArgsConstructor
 public class Applicants {

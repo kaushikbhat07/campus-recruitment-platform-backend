@@ -34,6 +34,7 @@ public class UpdateJobs {
 
     /**
      * Updates the job with new info
+     *
      * @param newJob The updated job object
      * @return 200
      */

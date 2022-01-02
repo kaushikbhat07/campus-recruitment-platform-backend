@@ -2,7 +2,6 @@ package com.aimit.campushire.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -15,14 +14,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Kaushik Bhat
@@ -41,10 +38,12 @@ public class Job {
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     Date modifiedAt;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "job")
+    List<Applicants> applicants;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int jobId;
-
     @NotNull
     private String company;
     @NotNull
@@ -53,13 +52,9 @@ public class Job {
     @NotNull
     private String jobDesc;
     private String offerType;
-    private String misc;
 
 //    @ManyToMany(mappedBy = "appliedJobs", fetch = FetchType.LAZY)
 //    @JsonIgnore
 //    List<Student> appliedStudents;
-
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "job")
-    List<Applicants> applicants;
+    private String misc;
 }

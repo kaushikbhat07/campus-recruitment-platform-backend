@@ -35,6 +35,7 @@ public class DeleteJobs {
 
     /**
      * Deletes all jobs
+     *
      * @return 200
      */
     @CrossOrigin(host)
@@ -63,6 +64,7 @@ public class DeleteJobs {
 
     /**
      * Deletes the Job IDs passed in request parameters
+     *
      * @param jobIds List of Job IDs
      * @return 200
      */
