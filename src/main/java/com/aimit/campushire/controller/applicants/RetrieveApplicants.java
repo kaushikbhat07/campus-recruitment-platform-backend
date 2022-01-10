@@ -43,7 +43,7 @@ public class RetrieveApplicants {
      * @param jobId
      * @return 200
      */
-    @GetMapping("/view/{jobId}/applications")
+    @GetMapping("/view/job/{jobId}/applications")
     public ResponseEntity getApplicationsByJobId(@PathVariable(name = "jobId") Integer jobId) {
         try {
             final Optional<Job> retrievedJob = jobRepository.findById(jobId);
@@ -71,25 +71,25 @@ public class RetrieveApplicants {
      * @param studentId
      * @return 200
      */
-    @GetMapping("/view/{studentId}/applications")
-    public ResponseEntity getApplicationsByStudentId(@PathVariable(name = "studentId") Integer studentId) {
-        try {
-            final Optional<Student> retrievedStudent = studentRepository.findById(studentId);
-
-            if (!retrievedStudent.isPresent()) {
-                logger.info("Student with IDs: " + studentId + " not found. ");
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-
-            logger.info("Retrieving applications for Student ID: " + studentId);
-
-            final Student student = retrievedStudent.get();
-
-            return new ResponseEntity<>(applicantRepository.findAllByStudent(student), HttpStatus.OK);
-
-        } catch (Exception e) {
-            logger.error("Jobs could not be retrieved. Exception occurred: " + e.getMessage());
-            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
-        }
-    }
+//    @GetMapping("/view/student/{studentId}/applications")
+//    public ResponseEntity getApplicationsByStudentId(@PathVariable(name = "studentId") Integer studentId) {
+//        try {
+//            final Optional<Student> retrievedStudent = studentRepository.findById(studentId);
+//
+//            if (!retrievedStudent.isPresent()) {
+//                logger.info("Student with IDs: " + studentId + " not found. ");
+//                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//            }
+//
+//            logger.info("Retrieving applications for Student ID: " + studentId);
+//
+//            final Student student = retrievedStudent.get();
+//
+//            return new ResponseEntity<>(applicantRepository.findAllByStudent(student), HttpStatus.OK);
+//
+//        } catch (Exception e) {
+//            logger.error("Jobs could not be retrieved. Exception occurred: " + e.getMessage());
+//            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+//        }
+//    }
 }

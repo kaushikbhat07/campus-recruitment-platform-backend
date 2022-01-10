@@ -1,7 +1,6 @@
 package com.aimit.campushire.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -9,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -44,17 +45,15 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int jobId;
-    @NotNull
+    @Column(nullable = false)
     private String company;
-    @NotNull
+    @Column(nullable = false)
     private String ctc;
+    @Column(nullable = false)
     private String eligibility;
-    @NotNull
+    @Column(nullable = false)
     private String jobDesc;
     private String offerType;
 
-//    @ManyToMany(mappedBy = "appliedJobs", fetch = FetchType.LAZY)
-//    @JsonIgnore
-//    List<Student> appliedStudents;
     private String misc;
 }
