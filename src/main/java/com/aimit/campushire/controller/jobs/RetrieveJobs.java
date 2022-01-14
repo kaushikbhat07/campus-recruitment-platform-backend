@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,6 +44,7 @@ public class RetrieveJobs {
      *
      * @return 200
      */
+    @CrossOrigin(host)
     @GetMapping("/view/all")
     public ResponseEntity getJobs() {
         try {
@@ -68,6 +70,7 @@ public class RetrieveJobs {
      * @param jobIds List of Job IDs
      * @return
      */
+    @CrossOrigin(host)
     @GetMapping("/view/")
     public ResponseEntity getJobsByIds(@RequestParam("id") List<Integer> jobIds) {
         try {
