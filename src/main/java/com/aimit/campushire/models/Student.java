@@ -84,7 +84,7 @@ public class Student {
     @Column(nullable = false)
     private long adharNumber;
 
-//    @JoinTable(
+    //    @JoinTable(
 //            name = "applications",
 //            joinColumns = @JoinColumn(name = "studentId"),
 //            inverseJoinColumns = @JoinColumn(name = "jobId"))

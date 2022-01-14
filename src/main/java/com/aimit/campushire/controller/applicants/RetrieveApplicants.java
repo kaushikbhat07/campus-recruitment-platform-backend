@@ -1,7 +1,6 @@
 package com.aimit.campushire.controller.applicants;
 
 import com.aimit.campushire.models.Job;
-import com.aimit.campushire.models.Student;
 import com.aimit.campushire.repository.ApplicantRepository;
 import com.aimit.campushire.repository.JobRepository;
 import com.aimit.campushire.repository.StudentRepository;
